@@ -20,7 +20,16 @@ Todo se carga vía CDN: no se necesitan instalaciones locales.
 
 ## Desarrollo
 
-Simplemente abre `web/index.html` en tu navegador para trabajar en local. No se necesita servidor.
+Para desarrollar en local se necesita un servidor web sencillo. Desde la
+carpeta `web` puedes ejecutar, por ejemplo:
+
+```bash
+cd web
+python -m http.server 8000
+```
+
+Luego visita <http://localhost:8000/> en tu navegador. Abrir el archivo
+directamente con `file://` produce errores de CORS con los módulos ES.
 
 ## Licencia
 
