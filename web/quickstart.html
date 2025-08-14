@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quickstart TurboList-QS++</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/theme.css" rel="stylesheet" />
+</head>
+<body class="bg-dark text-light text-center p-5">
+  <h1>TurboList-QS++</h1>
+  <p>Demo en un clic.</p>
+  <button class="btn btn-primary" id="demo-btn">Ordenar ejemplo</button>
+  <canvas id="viz" width="800" height="400" class="border border-secondary mt-3"></canvas>
+  <script type="module">
+    import { quicksort } from './js/quicksort.js';
+    import { Visualizer } from './js/visualizer.js';
+    const viz = new Visualizer(document.getElementById('viz'));
+    const arr = Array.from({length:50},()=>Math.floor(Math.random()*100));
+    viz.setData(arr);
+    document.getElementById('demo-btn').onclick = () => {
+      const hooks={onSwap:(i,j)=>viz.pushEvent({type:'swap',indices:[i,j]}),onPivot:i=>viz.pushEvent({type:'pivot',index:i})};
+      const res=quicksort(arr.slice(),{},hooks);
+      viz.setData(res.array);
+      viz.play();
+    };
+  </script>
+</body>
+</html>
