@@ -1,0 +1,4 @@
+body { font-family: system-ui, sans-serif; }
+canvas { background: #111; }
+#controls { max-height: 80vh; overflow-y: auto; }
+.bar { transition: height 0.2s; }
